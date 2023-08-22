@@ -1,0 +1,32 @@
+//Merge Sort
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int medianArray[] = new int[nums1.length + nums2.length];
+        int p1 = 0;
+        int p2 = 0;
+        int k = 0;
+        while(p1<nums1.length && p2<nums2.length){
+            if(nums1[p1] < nums2[p2]){
+                medianArray[k++] = nums1[p1++];
+            }
+            else{
+                medianArray[k++] = nums2[p2++];
+            }
+        }
+            while(p1<nums1.length){
+                medianArray[k++] = nums1[p1++];
+            }
+            while(p2<nums2.length){
+                medianArray[k++] = nums2[p2++];
+            }
+        int total = medianArray.length;
+        if(total%2 == 1){
+            return medianArray[total/2];
+        }
+        else{
+            int mid1 = medianArray[total/2-1];
+            int mid2 = medianArray[total/2];
+            return (double)(mid1+mid2)/2;
+        }
+    }
+}
