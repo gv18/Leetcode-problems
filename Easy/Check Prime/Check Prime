@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class Solution {
+	public static String isPrime(int num) {
+		if (num <= 1){
+			return "NO";
+		}
+		int count = 0;
+		for (int i = 1; i<=Math.sqrt(num); i++) {
+			if (num % i == 0) {
+				count++;
+				if (num / i != i) {
+					count++;
+				}
+			}
+		}
+		return count > 2 ? "NO" : "YES";
+	}
+}
